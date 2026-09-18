@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f1e6;
+  --surface: #ffffff;
+  --sage: #eef0e2;
+  --ink: #24211a;
+  --ink-soft: #5c5748;
+  --ink-faint: #8d8672;
+  --primary: #3b4a2b;
+  --primary-dark: #2a331e;
+  --primary-soft: #dde4cd;
+  --accent: #b0723f;
+  --accent-dark: #8a5528;
+  --accent-soft: #ecd9bf;
+  --line: #e1d8c2;
+  --on-primary: #f5f1e4;
+  --on-accent: #2a1607;
+  --good: #3b6b46;
+  --shadow-color: 20 30% 15%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171712;
+    --surface: #201f18;
+    --sage: #1d2118;
+    --ink: #ece5d3;
+    --ink-soft: #b9b09a;
+    --ink-faint: #857c68;
+    --primary: #8bab6f;
+    --primary-dark: #6c8a54;
+    --primary-soft: #2a331e;
+    --accent: #d99a5c;
+    --accent-dark: #b87b3c;
+    --accent-soft: #3a2a17;
+    --line: #353225;
+    --on-primary: #14180d;
+    --on-accent: #1c1006;
+    --good: #6fae7c;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #171712;
+  --surface: #201f18;
+  --sage: #1d2118;
+  --ink: #ece5d3;
+  --ink-soft: #b9b09a;
+  --ink-faint: #857c68;
+  --primary: #8bab6f;
+  --primary-dark: #6c8a54;
+  --primary-soft: #2a331e;
+  --accent: #d99a5c;
+  --accent-dark: #b87b3c;
+  --accent-soft: #3a2a17;
+  --line: #353225;
+  --on-primary: #14180d;
+  --on-accent: #1c1006;
+  --good: #6fae7c;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sage: var(--sage);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-soft: var(--accent-soft);
+  --color-line: var(--line);
+  --color-on-primary: var(--on-primary);
+  --color-on-accent: var(--on-accent);
+  --color-good: var(--good);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--on-accent);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.font-body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
