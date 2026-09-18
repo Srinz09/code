@@ -20,9 +20,8 @@ export default function StartHero() {
             I know what it feels like to look at yourself and think: I need to change.
           </h1>
           <p className="mx-auto mt-4 max-w-lg text-[16px] leading-relaxed text-ink-soft">
-            I was around 99&nbsp;kg and struggling with my health and lifestyle. Today I help others build
-            healthier habits and stay accountable. This is wellness and lifestyle guidance, not medical
-            treatment.
+            I was around 99&nbsp;kg, struggling with my health. Today I help others build healthier habits.
+            This is wellness guidance, not medical treatment.
           </p>
         </div>
 

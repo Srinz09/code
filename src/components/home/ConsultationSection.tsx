@@ -23,8 +23,7 @@ export default function ConsultationSection({
         </div>
         <LeadForm variant={variant} />
         <p className="mx-auto mt-6 max-w-md text-center text-[12.5px] leading-relaxed text-ink-faint">
-          This free consultation covers your goals, lifestyle and challenges, and whether this guidance is a
-          good fit for you. It is not a medical diagnosis.
+          Covers your goals and challenges — not a medical diagnosis.
         </p>
       </Container>
     </section>

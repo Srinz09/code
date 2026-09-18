@@ -23,10 +23,8 @@ export default function Hero() {
             transformation.
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-ink-soft">
-            If you&rsquo;re dealing with weight, low energy, inconsistent eating habits or just can&rsquo;t stay
-            consistent — I&rsquo;ve personally been through that. Now I offer structured, 1:1 guidance and
-            accountability to help you build a healthier routine. This is wellness and lifestyle support, not
-            medical treatment.
+            I&rsquo;ve been through weight struggles, low energy and inconsistency myself. Now I offer 1:1
+            guidance to help you build lasting habits — this is wellness support, not medical treatment.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a

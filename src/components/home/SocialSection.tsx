@@ -9,14 +9,16 @@ export default function SocialSection() {
         <SectionHeading
           eyebrow={`@${instagramHandle}`}
           title="Follow the real, everyday version of this."
-          subtitle="Not a highlight reel — the routines, meals and client journeys behind the guidance, as they actually happen."
+          subtitle="Not a highlight reel — the real routines and meals behind the guidance."
         />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="flex flex-wrap justify-center gap-2.5">
           {socialCategories.map((cat) => (
-            <div key={cat.label} className="rounded-sm border border-line bg-surface p-4">
-              <div className="text-[14px] font-semibold text-ink">{cat.label}</div>
-              <div className="mt-1 text-[12.5px] leading-relaxed text-ink-faint">{cat.description}</div>
-            </div>
+            <span
+              key={cat.label}
+              className="rounded-full border border-line bg-surface px-4 py-2 text-[13.5px] font-medium text-ink"
+            >
+              {cat.label}
+            </span>
           ))}
         </div>
         <div className="mt-8 text-center">

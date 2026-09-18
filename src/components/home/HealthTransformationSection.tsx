@@ -23,7 +23,7 @@ export default function HealthTransformationSection() {
             <SectionHeading
               align="left"
               title="This isn't only about losing weight."
-              subtitle="A health transformation shows up in more places than the scale — in how you move through your day, what you reach for when you're stressed, and whether you can keep going after week three."
+              subtitle="It shows up in your day, your energy, and whether you can keep going after week three."
             />
             <ul className="grid grid-cols-2 gap-3">
               {outcomes.map((item) => (
@@ -36,8 +36,7 @@ export default function HealthTransformationSection() {
               ))}
             </ul>
             <p className="mt-6 text-[13px] text-ink-faint">
-              This is lifestyle and fitness guidance — not a medical treatment, diagnosis or cure for any
-              condition.
+              Lifestyle and fitness guidance — not medical treatment or a cure.
             </p>
           </div>
           <div className="relative mx-auto aspect-[3/4] w-full max-w-[360px] overflow-hidden rounded-sm">
