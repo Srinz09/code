@@ -26,6 +26,21 @@ All WhatsApp links are built in `src/lib/whatsapp.ts`. The number is currently `
 
 `src/lib/analytics.ts` pushes funnel events (`hero_cta_click`, `form_started`, `whatsapp_click`, etc.) to `window.dataLayer`, ready to wire into GTM/GA4. It no-ops safely if no tag manager is present.
 
+## Meta Ads tracking
+
+The consultation form (`src/components/home/LeadForm.tsx`) fires a Meta **Lead** event two ways on submit, both carrying the same `event_id` so Meta deduplicates them:
+
+- **Browser Pixel** — `src/components/MetaPixel.tsx`, loaded site-wide from `layout.tsx`.
+- **Conversions API** — `src/app/api/lead/route.ts`, a server-side route handler that hashes email/phone and forwards the event to the Meta Graph API. This survives ad blockers and iOS tracking prevention that the pixel alone misses.
+
+To enable it, copy `.env.example` to `.env.local` and fill in:
+
+- `NEXT_PUBLIC_META_PIXEL_ID` — from Meta Events Manager (Data Sources → your pixel).
+- `META_CAPI_ACCESS_TOKEN` — a system user access token with `ads_management`, generated in Events Manager → Settings → Conversions API → "Generate access token". Server-only; never commit it or prefix it with `NEXT_PUBLIC_`.
+- `META_CAPI_TEST_EVENT_CODE` — optional, from Events Manager → Test Events, while verifying. Remove it once verified.
+
+Verify events are landing in Meta Events Manager → Test Events (with the test code set) before turning on ad spend, then in Events Manager's main event log once the campaign goes live.
+
 ## Development
 
 ```bash

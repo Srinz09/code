@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { track } from "@/lib/analytics";
+import { generateEventId, getMetaBrowserIds, trackMetaPixelEvent } from "@/lib/meta";
 import WhatsAppButton from "../WhatsAppButton";
 import {
   goalOptions,
@@ -107,6 +108,37 @@ export default function LeadForm({ variant = "full" }: { variant?: "full" | "sho
     if (!form.consent) return;
     track("form_submitted", { goal: form.goal, readiness: form.readiness });
     track("consultation_request", { goal: form.goal, ageRange: form.ageRange, city: form.city });
+
+    // Same eventId to both calls so Meta dedupes the browser pixel event
+    // against the server-side Conversions API event.
+    const eventId = generateEventId();
+    trackMetaPixelEvent(
+      "Lead",
+      { content_name: "consultation_form", goal: form.goal, readiness: form.readiness },
+      eventId,
+    );
+    const { fbp, fbc } = getMetaBrowserIds();
+    fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        eventId,
+        eventSourceUrl: window.location.href,
+        fbp,
+        fbc,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        goal: form.goal,
+        readiness: form.readiness,
+        ageRange: form.ageRange,
+        city: form.city,
+      }),
+    }).catch(() => {
+      // Best-effort — never block the lead confirmation UI on this.
+    });
+
     setSubmitted(true);
   }
 
