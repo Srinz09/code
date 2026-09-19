@@ -1,42 +1,29 @@
-import Link from "next/link";
-import Container from "./Container";
-import WhatsAppButton from "./WhatsAppButton";
 import { navLinks } from "@/lib/data/content";
 
-export default function SiteHeader({
-  variant = "full",
-  ctaHref = "/#consultation",
-}: {
-  variant?: "full" | "minimal";
-  ctaHref?: string;
-}) {
+export default function SiteHeader() {
   return (
-    <header className="sticky top-[env(safe-area-inset-top,0px)] z-50 border-b border-line bg-bg/90 backdrop-blur-md">
-      <Container size="wide" className="flex items-center justify-between py-3.5">
-        <Link href="/" className="font-display text-[20px] font-semibold tracking-tight text-ink">
-          fit<span className="text-primary">withdebasri</span>
-        </Link>
-        {variant === "full" && (
-          <nav className="hidden md:flex items-center gap-6 text-[14.5px] font-medium text-ink-soft">
-            {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="border-b-2 border-transparent pb-0.5 hover:border-accent hover:text-ink">
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        )}
-        <div className="flex items-center gap-3">
-          <a
-            href={ctaHref}
-            className="hidden sm:inline-flex items-center rounded-md bg-primary px-5 py-2.5 text-[14px] font-semibold text-on-primary hover:bg-primary-dark"
-          >
-            Start Your Transformation
-          </a>
-          <WhatsAppButton context="header" size="sm" className="sm:hidden">
-            WhatsApp
-          </WhatsAppButton>
-        </div>
-      </Container>
-    </header>
+    <div
+      className="sticky top-0 z-50 flex items-center justify-between border-b border-line px-6 py-4 backdrop-blur-[8px]"
+      style={{ background: "oklch(96% 0.015 85 / 0.92)" }}
+    >
+      <div className="font-display text-[20px] font-semibold tracking-[0.01em] text-ink">fitwithdebasri</div>
+      <div className="flex items-center gap-5">
+        <nav className="hidden min-[800px]:flex items-center gap-6 text-[14.5px] font-medium text-[var(--ink-faint)]">
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+        <a
+          href="#consultation"
+          className="whitespace-nowrap rounded-[2px] bg-forest font-semibold text-cream-light
+            px-[14px] py-[9px] text-[13px] min-[800px]:px-5 min-[800px]:py-[10px] min-[800px]:text-[14px]"
+        >
+          <span className="min-[800px]:hidden">Book Free</span>
+          <span className="hidden min-[800px]:inline">Book a Free Consultation</span>
+        </a>
+      </div>
+    </div>
   );
 }

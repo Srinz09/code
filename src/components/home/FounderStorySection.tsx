@@ -1,54 +1,103 @@
-import Image from "next/image";
-import Container from "../Container";
-import SectionHeading from "../SectionHeading";
-import PlaceholderMedia from "../PlaceholderMedia";
-import BeforeAfterSlider from "../BeforeAfterSlider";
-import WhatsAppButton from "../WhatsAppButton";
+"use client";
+
+import { useState } from "react";
 import { storyChapters } from "@/lib/data/founderStory";
 
-export default function FounderStorySection() {
-  const before = storyChapters[0].image!;
-  const now = storyChapters[3].image!;
+function ChapterPlaceholder({ label }: { label: string }) {
+  return (
+    <div
+      className="flex aspect-[4/3] items-center justify-center rounded-[2px] p-4 text-center"
+      style={{
+        backgroundImage:
+          "repeating-linear-gradient(135deg,oklch(90% 0.02 85),oklch(90% 0.02 85) 12px,oklch(85% 0.02 85) 12px,oklch(85% 0.02 85) 24px)",
+      }}
+    >
+      <div className="font-mono text-[12px]" style={{ color: "oklch(40% 0.015 85)" }}>
+        {label}
+      </div>
+    </div>
+  );
+}
+
+function BeforeAfterCompare() {
+  const [pos, setPos] = useState(55);
+  const percent = `${100 - pos}%`;
 
   return (
-    <section id="story" className="py-16 sm:py-24">
-      <Container>
-        <SectionHeading title="This isn't a story I read about. I lived it." />
+    <div className="relative mx-auto aspect-[3/4] max-w-[520px] overflow-hidden rounded-[2px]">
+      <div
+        className="absolute inset-0 flex items-center justify-center"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(135deg,oklch(90% 0.02 145),oklch(90% 0.02 145) 14px,oklch(84% 0.02 145) 14px,oklch(84% 0.02 145) 28px)",
+        }}
+      >
+        <div className="font-mono text-[12px]" style={{ color: "oklch(30% 0.04 145)" }}>
+          Now &middot; 1080&times;1440
+        </div>
+      </div>
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={{
+          width: percent,
+          backgroundImage:
+            "repeating-linear-gradient(135deg,oklch(90% 0.015 85),oklch(90% 0.015 85) 14px,oklch(84% 0.015 85) 14px,oklch(84% 0.015 85) 28px)",
+        }}
+      >
+        <div
+          className="absolute top-1/2 left-0 -translate-y-1/2 text-center font-mono text-[12px]"
+          style={{ width: 520, color: "oklch(35% 0.015 85)" }}
+        >
+          Before &middot; 1080&times;1440
+        </div>
+      </div>
+      <div className="absolute top-0 bottom-0 w-[2px] bg-cream-light" style={{ left: percent }} />
+      <input
+        type="range"
+        min={0}
+        max={100}
+        value={pos}
+        onChange={(e) => setPos(Number(e.target.value))}
+        className="absolute right-[6%] bottom-1 left-[6%] h-11"
+        style={{ width: "88%", margin: "0 6%" }}
+        aria-label="Drag to see the progress"
+      />
+    </div>
+  );
+}
 
-        <div className="flex flex-col gap-14 sm:gap-20">
-          {storyChapters.map((chapter, i) => (
-            <div
-              key={chapter.tag}
-              className="flex flex-wrap items-center gap-8 sm:gap-12"
-              style={{ flexDirection: i % 2 === 1 ? "row-reverse" : "row" }}
-            >
-              <div className="min-w-[240px] flex-1">
-                {chapter.image ? (
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
-                    <Image
-                      src={chapter.image.src}
-                      alt={chapter.image.alt}
-                      fill
-                      sizes="(min-width: 640px) 45vw, 90vw"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                ) : (
-                  <PlaceholderMedia label={chapter.imagePlaceholderLabel ?? "[Photo]"} aspect="aspect-[4/3]" />
-                )}
+export default function FounderStorySection() {
+  return (
+    <section id="story" className="px-6 py-16">
+      <div className="mx-auto max-w-[900px]">
+        <h2
+          className="font-display text-balance mb-14 text-center font-semibold text-ink"
+          style={{ fontSize: "clamp(28px,3.6vw,42px)" }}
+        >
+          This Isn&rsquo;t A Story I Read About. I Lived It.
+        </h2>
+
+        <div className="flex flex-col gap-16">
+          {storyChapters.map((chapter) => (
+            <div key={chapter.tag} className="flex flex-wrap items-center gap-10">
+              <div className="min-w-[240px] flex-1" style={{ order: chapter.imgOrder }}>
+                <ChapterPlaceholder label={chapter.imgLabel} />
               </div>
               <div className="min-w-[240px] flex-1">
-                <div className="mb-2.5 text-[12.5px] font-semibold uppercase tracking-[0.1em] text-accent-dark">
+                <div className="mb-2.5 text-[12.5px] font-semibold tracking-[0.1em] text-forest-light uppercase">
                   {chapter.tag}
                 </div>
                 <h3 className="font-display text-[24px] font-semibold text-ink">{chapter.title}</h3>
-                <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{chapter.body}</p>
+                <p className="mt-3 text-[15.5px] leading-[1.65]" style={{ color: "var(--ink-soft-3)" }}>
+                  {chapter.body}
+                </p>
                 {chapter.tags && (
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-3.5 flex flex-wrap gap-2">
                     {chapter.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-sm bg-primary-soft px-3 py-1.5 text-[12.5px] font-semibold text-primary-dark"
+                        className="rounded-[2px] bg-forest-soft px-3 py-1.5 text-[12.5px] font-semibold"
+                        style={{ color: "var(--forest-soft-text-2)" }}
                       >
                         {tag}
                       </span>
@@ -60,25 +109,31 @@ export default function FounderStorySection() {
           ))}
         </div>
 
-        <div className="mt-16 sm:mt-20">
+        <div className="mt-4">
           <div className="mb-6 text-center">
-            <div className="mb-2 text-[12.5px] font-semibold uppercase tracking-[0.1em] text-accent-dark">
-              The transformation
+            <div className="mb-2.5 text-[12.5px] font-semibold tracking-[0.1em] text-forest-light uppercase">
+              The Transformation
             </div>
             <h3 className="font-display text-[22px] font-semibold text-ink">Drag to see the progress.</h3>
           </div>
-          <BeforeAfterSlider before={before} after={now} />
+          <BeforeAfterCompare />
         </div>
 
-        <p className="mx-auto mt-16 max-w-xl text-balance text-center font-display text-[clamp(1.4rem,3vw,2rem)] font-semibold leading-snug text-ink">
-          I didn&rsquo;t become someone else. I slowly became a healthier version of myself.
+        <p
+          className="font-display text-balance mx-auto mt-14 mb-7 max-w-[720px] text-center font-semibold text-ink"
+          style={{ fontSize: "clamp(24px,3vw,32px)", lineHeight: 1.35 }}
+        >
+          I Didn&rsquo;t Become Someone Else. I Slowly Became A Healthier Version Of Myself.
         </p>
-        <div className="mt-8 flex justify-center">
-          <WhatsAppButton context="founder_story" size="lg">
-            Talk to someone who has been there
-          </WhatsAppButton>
+        <div className="text-center">
+          <a
+            href="#consultation"
+            className="inline-block rounded-[2px] bg-forest px-7 py-[15px] text-[15px] font-semibold text-cream-light"
+          >
+            Talk To Someone Who Has Been There
+          </a>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

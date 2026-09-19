@@ -1,82 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --sage: #f5f7f1;
-  --ink: #24211a;
-  --ink-soft: #5c5748;
-  --ink-faint: #8d8672;
-  --primary: #3b4a2b;
-  --primary-dark: #2a331e;
-  --primary-soft: #dde4cd;
-  --accent: #b0723f;
-  --accent-dark: #8a5528;
-  --accent-soft: #ecd9bf;
-  --line: #e4e2d8;
-  --on-primary: #f5f1e4;
-  --on-accent: #2a1607;
-  --good: #3b6b46;
-  --shadow-color: 20 30% 15%;
-}
+  /* Cream / page background family */
+  --cream: oklch(96% 0.015 85);
+  --cream-light: oklch(98% 0.01 85);
+  --cream-alt: oklch(93% 0.02 85);
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #171712;
-    --surface: #201f18;
-    --sage: #1d2118;
-    --ink: #ece5d3;
-    --ink-soft: #b9b09a;
-    --ink-faint: #857c68;
-    --primary: #8bab6f;
-    --primary-dark: #6c8a54;
-    --primary-soft: #2a331e;
-    --accent: #d99a5c;
-    --accent-dark: #b87b3c;
-    --accent-soft: #3a2a17;
-    --line: #353225;
-    --on-primary: #14180d;
-    --on-accent: #1c1006;
-    --good: #6fae7c;
-  }
-}
+  /* Ink / text family */
+  --ink: oklch(20% 0.01 85);
+  --ink-soft: oklch(38% 0.015 85);
+  --ink-soft-2: oklch(35% 0.015 85);
+  --ink-soft-3: oklch(30% 0.01 85);
+  --ink-faint: oklch(45% 0.015 85);
+  --ink-faint-2: oklch(40% 0.015 85);
+  --ink-faintest: oklch(50% 0.015 85);
 
-:root[data-theme="dark"] {
-  --bg: #171712;
-  --surface: #201f18;
-  --sage: #1d2118;
-  --ink: #ece5d3;
-  --ink-soft: #b9b09a;
-  --ink-faint: #857c68;
-  --primary: #8bab6f;
-  --primary-dark: #6c8a54;
-  --primary-soft: #2a331e;
-  --accent: #d99a5c;
-  --accent-dark: #b87b3c;
-  --accent-soft: #3a2a17;
-  --line: #353225;
-  --on-primary: #14180d;
-  --on-accent: #1c1006;
-  --good: #6fae7c;
+  /* Lines / borders */
+  --line: oklch(85% 0.015 85);
+  --line-soft: oklch(87% 0.015 85);
+  --line-strong: oklch(80% 0.015 85);
+  --line-faint: oklch(60% 0.02 85);
+
+  /* Forest green — primary */
+  --forest: oklch(28% 0.05 145);
+  --forest-hover: oklch(22% 0.05 145);
+  --forest-light: oklch(45% 0.06 145);
+  --forest-soft: oklch(94% 0.03 145);
+  --forest-soft-text: oklch(30% 0.05 145);
+  --forest-soft-text-2: oklch(30% 0.03 145);
+  --forest-soft-text-3: oklch(38% 0.04 145);
+
+  /* Top bar */
+  --topbar-bg: oklch(24% 0.045 145);
+  --topbar-text: oklch(92% 0.015 145);
+
+  /* Final CTA band */
+  --cta-band-bg: oklch(28% 0.05 145);
+  --cta-band-text: oklch(96% 0.02 145);
+
+  /* Error state */
+  --error-bg: oklch(95% 0.02 40);
+  --error-text: oklch(35% 0.02 40);
+  --error-border: oklch(45% 0.02 40);
+
+  --font-display: "Lora", Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-sage: var(--sage);
+  --color-cream: var(--cream);
+  --color-cream-light: var(--cream-light);
+  --color-cream-alt: var(--cream-alt);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-faint: var(--ink-faint);
-  --color-primary: var(--primary);
-  --color-primary-dark: var(--primary-dark);
-  --color-primary-soft: var(--primary-soft);
-  --color-accent: var(--accent);
-  --color-accent-dark: var(--accent-dark);
-  --color-accent-soft: var(--accent-soft);
   --color-line: var(--line);
-  --color-on-primary: var(--on-primary);
-  --color-on-accent: var(--on-accent);
-  --color-good: var(--good);
+  --color-line-soft: var(--line-soft);
+  --color-forest: var(--forest);
+  --color-forest-hover: var(--forest-hover);
+  --color-forest-light: var(--forest-light);
+  --color-forest-soft: var(--forest-soft);
+  --color-line-strong: var(--line-strong);
+  --color-line-faint: var(--line-faint);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -96,24 +81,156 @@ html {
   }
 }
 
-body {
-  background: var(--bg);
-  color: var(--ink);
+/* Base element defaults live in Tailwind's own cascade layer so a text- or
+   bg- utility applied to a link or input can still override them —
+   unlayered rules always beat @layer rules regardless of source order. */
+@layer base {
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+  }
+
+  a {
+    color: var(--forest);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--forest-hover);
+  }
+
+  input,
+  textarea {
+    font-family: var(--font-body);
+  }
 }
 
 ::selection {
-  background: var(--accent-soft);
-  color: var(--on-accent);
+  background: oklch(80% 0.055 145);
 }
 
 .font-display {
-  font-family: var(--font-display), Georgia, serif;
-}
-
-.font-body {
-  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-display);
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Range slider — matches the weighing-scale + before/after sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 24px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--forest);
+  border: 3px solid var(--cream-light);
+  box-shadow: 0 2px 6px oklch(20% 0.02 85 / 0.3);
+  margin-top: -1px;
+  cursor: grab;
+}
+input[type="range"]::-moz-range-track {
+  background: transparent;
+  height: 24px;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--forest);
+  border: 3px solid var(--cream-light);
+  box-shadow: 0 2px 6px oklch(20% 0.02 85 / 0.3);
+  cursor: grab;
+}
+
+@keyframes ctaPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px var(--cream-light), 0 8px 24px oklch(28% 0.05 145 / 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 2px var(--cream-light), 0 0 0 7px oklch(98% 0.01 85 / 0.35), 0 8px 24px oklch(28% 0.05 145 / 0.35);
+  }
+}
+.animate-cta-pulse {
+  animation: ctaPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes scaleBounce {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+.animate-scale-bounce {
+  animation: scaleBounce 0.25s ease-out;
+}
+
+@keyframes textPopBlink {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  75% {
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-text-pop {
+  animation: textPopBlink 0.5s ease-out;
+}
+
+/* Placeholder texture — matches the reference's repeating chevron pattern for un-filled photo/video slots */
+.placeholder-texture {
+  background-image: repeating-linear-gradient(
+    135deg,
+    oklch(90% 0.02 85),
+    oklch(90% 0.02 85) 12px,
+    oklch(85% 0.02 85) 12px,
+    oklch(85% 0.02 85) 24px
+  );
+}
+.placeholder-texture-forest {
+  background-image: repeating-linear-gradient(
+    135deg,
+    oklch(90% 0.02 145),
+    oklch(90% 0.02 145) 14px,
+    oklch(84% 0.02 145) 14px,
+    oklch(84% 0.02 145) 28px
+  );
 }

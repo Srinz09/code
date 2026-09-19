@@ -1,28 +1,36 @@
-import WhatsAppButton from "./WhatsAppButton";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export default function MobileStickyCta({
   primaryHref = "#consultation",
-  primaryLabel = "Start Your Journey",
-  context,
+  inset = false,
 }: {
   primaryHref?: string;
-  primaryLabel?: string;
-  context: string;
+  inset?: boolean;
 }) {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-50 flex gap-2 border-t border-line bg-bg/97 p-3 backdrop-blur-md md:hidden"
-      style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
+      className="fixed inset-x-0 bottom-0 z-[60] hidden max-[799px]:flex gap-2 border-t border-line px-3.5 py-2.5 backdrop-blur-[8px]"
+      style={{
+        background: "oklch(96% 0.015 85 / 0.97)",
+        paddingBottom: "calc(10px + env(safe-area-inset-bottom))",
+      }}
     >
       <a
         href={primaryHref}
-        className="flex-1 rounded-md bg-primary py-3.5 text-center text-[14px] font-bold text-on-primary"
+        className="flex-1 rounded-[2px] bg-forest py-[13px] text-center text-[14px] font-bold text-cream-light"
+        style={inset ? { boxShadow: "0 0 0 2px var(--cream-light) inset" } : undefined}
       >
-        {primaryLabel}
+        Book Free Consultation
       </a>
-      <WhatsAppButton context={context} variant="ghost" className="flex-1 justify-center" showIcon={false}>
-        WhatsApp
-      </WhatsAppButton>
+      <a
+        href={buildWhatsAppLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-1 rounded-[2px] border py-[13px] text-center text-[14px] font-bold text-ink"
+        style={{ borderColor: "var(--line-faint)" }}
+      >
+        WhatsApp Me
+      </a>
     </div>
   );
 }

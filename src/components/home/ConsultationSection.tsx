@@ -1,31 +1,32 @@
-import Container from "../Container";
 import LeadForm from "./LeadForm";
 
-export default function ConsultationSection({
-  id = "consultation",
-  title = "You don't need to have everything figured out before you start.",
-  subtitle = "Start with a conversation.",
-  variant = "full",
-}: {
-  id?: string;
-  title?: string;
-  subtitle?: string;
-  variant?: "full" | "short";
-}) {
-  return (
-    <section id={id} className="py-16 sm:py-24">
-      <Container size="narrow">
-        <div className="mb-8 text-center">
-          <h2 className="font-display text-balance text-[clamp(1.5rem,3.6vw,2.1rem)] font-semibold text-ink">
-            {title}
-          </h2>
-          <p className="mt-2.5 text-[16px] text-ink-soft">{subtitle}</p>
+export default function ConsultationSection({ variant, page }: { variant: "home" | "start"; page: string }) {
+  if (variant === "start") {
+    return (
+      <section id="lead-form" className="bg-cream-alt px-6 py-16">
+        <div className="mx-auto max-w-[560px]">
+          <h2 className="font-display mb-2 text-center text-[26px] font-semibold text-ink">Book A Free Consultation</h2>
+          <p className="mb-7 text-center text-[14.5px] text-[var(--ink-soft)]">Takes less than a minute.</p>
+          <LeadForm variant="start" page={page} />
         </div>
-        <LeadForm variant={variant} />
-        <p className="mx-auto mt-6 max-w-md text-center text-[12.5px] leading-relaxed text-ink-faint">
-          Covers your goals and challenges — not a medical diagnosis.
-        </p>
-      </Container>
+      </section>
+    );
+  }
+
+  return (
+    <section id="consultation" className="px-6 py-16">
+      <div className="mx-auto max-w-[640px]">
+        <div className="mb-9 text-center">
+          <h2
+            className="font-display text-balance mb-3 font-semibold text-ink"
+            style={{ fontSize: "clamp(26px,3.4vw,36px)" }}
+          >
+            You Don&rsquo;t Need To Have Everything Figured Out Before You Start.
+          </h2>
+          <p className="text-[16px] text-[var(--ink-soft)]">Start with a conversation.</p>
+        </div>
+        <LeadForm variant="home" page={page} />
+      </div>
     </section>
   );
 }

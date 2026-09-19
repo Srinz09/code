@@ -1,25 +1,28 @@
-import Container from "../Container";
-import SectionHeading from "../SectionHeading";
 import { identificationCards } from "@/lib/data/content";
 
 export default function IdentificationSection() {
   return (
-    <section className="bg-sage py-16 sm:py-24">
-      <Container>
-        <SectionHeading title="Maybe your story feels a little like mine." />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <section id="identification" className="bg-cream-alt px-6 py-16">
+      <div className="mx-auto max-w-[960px]">
+        <h2
+          className="font-display text-balance mb-10 text-center font-semibold text-ink"
+          style={{ fontSize: "clamp(26px,3.4vw,38px)" }}
+        >
+          Maybe Your Story Feels A Little Like Mine.
+        </h2>
+        <div className="mb-9 grid gap-4" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           {identificationCards.map((card) => (
-            <div key={card.title} className="rounded-sm border border-line bg-surface p-6">
-              <div className="mb-2 font-semibold text-[16px] text-ink">{card.title}</div>
-              <div className="text-[14.5px] leading-relaxed text-ink-soft">{card.body}</div>
+            <div key={card.title} className="rounded-[2px] border border-line-soft bg-cream p-6">
+              <div className="mb-2 text-[16px] font-semibold text-ink">{card.title}</div>
+              <div className="text-[14.5px] leading-[1.55] text-[var(--ink-soft)]">{card.body}</div>
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-10 max-w-xl text-center font-display text-[19px] italic leading-relaxed text-primary">
+        <p className="font-display mx-auto max-w-[680px] text-center text-[20px] leading-normal text-forest italic">
           I understand because I didn&rsquo;t start this journey as a fitness expert. I started as someone who
           needed to change.
         </p>
-      </Container>
+      </div>
     </section>
   );
 }
