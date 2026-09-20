@@ -6,12 +6,12 @@ import type { HeroSlide } from "@/lib/data/founderStory";
 
 export default function HeroImageSlider({
   slides,
-  minHeight = 420,
+  maxWidth = 460,
   edgeFade = false,
   overlayCard = false,
 }: {
   slides: HeroSlide[];
-  minHeight?: number;
+  maxWidth?: number;
   edgeFade?: boolean;
   overlayCard?: boolean;
 }) {
@@ -51,8 +51,8 @@ export default function HeroImageSlider({
 
   return (
     <div
-      className="relative flex-1 cursor-grab overflow-hidden bg-[oklch(90%_0.015_85)]"
-      style={{ flexBasis: 420, minHeight, touchAction: "pan-y" }}
+      className="relative min-w-[280px] cursor-grab overflow-hidden bg-[oklch(90%_0.015_85)]"
+      style={{ flex: `1 1 ${maxWidth}px`, maxWidth, aspectRatio: "3 / 4", touchAction: "pan-y" }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -72,8 +72,8 @@ export default function HeroImageSlider({
               src={s.photo.src}
               alt={s.photo.alt}
               fill
-              sizes="50vw"
-              className="object-contain"
+              sizes="(min-width: 800px) 460px, 90vw"
+              className="object-cover"
               draggable={false}
               priority={i === 0}
             />

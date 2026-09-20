@@ -18,7 +18,7 @@ export default function StartHero() {
         helperText="Free consultation · No obligation · Individual journeys vary"
       />
 
-      <div className="hidden min-[800px]:flex min-[800px]:min-h-[520px] flex-wrap">
+      <div className="hidden min-[800px]:flex min-[800px]:min-h-[520px] flex-wrap items-center">
         <div className="flex flex-1 flex-col justify-center px-11 py-14" style={{ flexBasis: 360 }}>
           <div className="mb-4 text-[12.5px] font-bold tracking-[0.12em] text-forest-light uppercase">
             A Real Transformation Story
@@ -48,7 +48,7 @@ export default function StartHero() {
           </div>
         </div>
 
-        <HeroImageSlider slides={startHeroSlides} minHeight={400} />
+        <HeroImageSlider slides={startHeroSlides} maxWidth={440} />
       </div>
     </div>
   );

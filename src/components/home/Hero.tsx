@@ -13,7 +13,7 @@ export default function Hero() {
     <div id="hero">
       <HeroStoryCards cards={storyCards} labelSize="20px" />
 
-      <div className="hidden min-[800px]:flex min-[800px]:min-h-[560px] flex-wrap">
+      <div className="hidden min-[800px]:flex min-[800px]:min-h-[560px] flex-wrap items-center">
         <div className="flex flex-1 flex-col justify-center px-11 py-16" style={{ flexBasis: 380 }}>
           <div className="mb-[18px] text-[12.5px] font-bold tracking-[0.12em] text-forest-light uppercase">
             A Real Transformation Story
@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroImageSlider slides={homeHeroSlides} minHeight={420} edgeFade overlayCard />
+        <HeroImageSlider slides={homeHeroSlides} maxWidth={480} edgeFade overlayCard />
       </div>
     </div>
   );
