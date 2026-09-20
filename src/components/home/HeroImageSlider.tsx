@@ -73,7 +73,7 @@ export default function HeroImageSlider({
               alt={s.photo.alt}
               fill
               sizes="50vw"
-              className="object-cover object-top"
+              className="object-contain"
               draggable={false}
               priority={i === 0}
             />
