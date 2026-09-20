@@ -25,9 +25,6 @@ export default function SiteFooter() {
             <Link href="/transformations" className="hover:text-ink">
               Transformations
             </Link>
-            <Link href="/validation-framework" className="hover:text-ink">
-              Validation Framework
-            </Link>
             <Link href="/privacy" className="hover:text-ink">
               Privacy Policy
             </Link>
