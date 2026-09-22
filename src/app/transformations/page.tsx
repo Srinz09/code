@@ -1,27 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ClientStoriesGrid from "@/components/ClientStoriesGrid";
 import { transformationsDisclaimer } from "@/lib/data/content";
 
 export const metadata: Metadata = {
   title: "Transformations",
   description: "Real client transformation stories — health and fitness journeys guided by fitwithdebasri. Individual results vary.",
 };
-
-function ChevronPlaceholder({ label }: { label: string }) {
-  return (
-    <div
-      className="flex aspect-[3/4] w-[130px] items-center justify-center overflow-hidden rounded-[2px] p-1.5 text-center"
-      style={{
-        backgroundImage:
-          "repeating-linear-gradient(135deg,oklch(88% 0.015 85),oklch(88% 0.015 85) 10px,oklch(82% 0.015 85) 10px,oklch(82% 0.015 85) 20px)",
-      }}
-    >
-      <div className="font-mono text-[10.5px]" style={{ color: "var(--ink-soft-2)" }}>
-        {label}
-      </div>
-    </div>
-  );
-}
 
 export default function TransformationsPage() {
   return (
@@ -52,27 +37,16 @@ export default function TransformationsPage() {
           Real People. Real Journeys.
         </h1>
         <p className="text-[16px] leading-[1.6] text-[var(--ink-soft)]">
-          Verified client transformations will be featured here as they&rsquo;re shared &mdash; never invented.
-          Individual results vary.
+          Real client transformations, shared with permission &mdash; nothing invented. Individual results vary.
         </p>
       </div>
 
-      <div className="mx-auto max-w-[720px] px-6 pt-8 pb-24">
-        <div className="rounded-[2px] border border-line-soft bg-cream-alt px-8 py-12 text-center">
-          <div className="mb-7 flex justify-center gap-3.5">
-            <ChevronPlaceholder label="Before · 900×1200" />
-            <ChevronPlaceholder label="Now · 900×1200" />
-          </div>
-          <h2 className="font-display mb-2.5 text-[20px] font-semibold text-ink">
-            The One Journey We Can Fully Vouch For Right Now.
-          </h2>
-          <p className="mx-auto max-w-[440px] text-[14.5px] leading-[1.6] text-[var(--ink-soft)]">
-            Client transformations will appear here once genuine, verified stories are shared &mdash; with real
-            names, real photos, and real quotes. Nothing invented in the meantime.
-          </p>
+      <div className="mx-auto max-w-[1100px] px-6 pt-8 pb-24">
+        <ClientStoriesGrid />
+        <div className="mt-10 text-center">
           <Link
             href="/#story"
-            className="mt-[22px] inline-block rounded-[2px] border px-6 py-3 text-[14px] font-semibold text-ink"
+            className="inline-block rounded-[2px] border px-6 py-3 text-[14px] font-semibold text-ink"
             style={{ borderColor: "var(--line-faint)" }}
           >
             See The Founder&rsquo;s Story

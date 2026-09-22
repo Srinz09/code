@@ -1,5 +1,6 @@
 import ImageSlotPlaceholder from "../ImageSlotPlaceholder";
-import { testimonialSlotIds, videoSlotIds } from "@/lib/data/testimonials";
+import ClientStoriesGrid from "../ClientStoriesGrid";
+import { videoSlotIds } from "@/lib/data/testimonials";
 
 export default function ProofWallSection() {
   return (
@@ -13,33 +14,17 @@ export default function ProofWallSection() {
         </h2>
         <p className="mx-auto max-w-[520px] text-[15px] text-[var(--ink-faint-2)]">
           Real proof starts with mine: diabetes, a fatty liver, and surgery to remove a large fibroid &mdash;
-          verified above. Client stories will join this wall as they&rsquo;re shared, never invented.
+          verified above. The transformations below are real clients, shared with permission &mdash; nothing
+          invented.
         </p>
       </div>
 
       <div className="mx-auto mt-11 max-w-[1100px]">
         <h3 className="font-display mb-1.5 text-center text-[22px] font-semibold text-ink">Client Stories</h3>
         <p className="mb-7 text-center text-[13.5px] text-[var(--ink-faint)]">
-          Photo and video slots ready for real client stories as they&rsquo;re shared.
+          Real before-and-after journeys from real clients.
         </p>
-        <div className="flex gap-3.5 overflow-x-auto pb-1.5 min-[800px]:grid min-[800px]:grid-cols-3 min-[800px]:gap-5 min-[800px]:overflow-visible">
-          {testimonialSlotIds.map((id) => (
-            <div
-              key={id}
-              className="overflow-hidden rounded-[2px] border border-line-soft bg-cream min-[800px]:flex-none"
-              style={{ flex: "0 0 78%", scrollSnapAlign: "center" }}
-            >
-              <ImageSlotPlaceholder label="Drop client photo" radius={8} className="h-[200px] w-full" />
-              <div className="px-1 pt-4 pb-1">
-                <div className="mb-0.5 text-[14.5px] font-semibold text-ink">Client name</div>
-                <div className="mb-2.5 text-[12.5px] font-semibold text-forest-light">Their goal</div>
-                <div className="text-[13.5px] leading-[1.55] text-[var(--ink-soft-3)] italic">
-                  Add their testimonial here once shared, with permission.
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ClientStoriesGrid />
       </div>
 
       <div className="mx-auto mt-8 max-w-[1100px]">
