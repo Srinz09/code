@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { storyChapters } from "@/lib/data/founderStory";
+
+const progressPhotos = {
+  before: { src: "/images/founder/story-before.jpg", alt: "Before" },
+  now: { src: "/images/founder/story-now.jpg", alt: "Now" },
+};
 
 function ChapterPlaceholder({ label }: { label: string }) {
   return (
@@ -21,37 +27,26 @@ function ChapterPlaceholder({ label }: { label: string }) {
 
 function BeforeAfterCompare() {
   const [pos, setPos] = useState(55);
-  const percent = `${100 - pos}%`;
+  const percent = 100 - pos;
+  // Compensates the clipped overlay's shrinking width so the "before" photo
+  // renders at the full box size underneath it, instead of being squeezed.
+  const innerWidth = 10000 / Math.max(1, percent);
 
   return (
     <div className="relative mx-auto aspect-[3/4] max-w-[520px] overflow-hidden rounded-[2px]">
-      <div
-        className="absolute inset-0 flex items-center justify-center"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(135deg,oklch(90% 0.02 145),oklch(90% 0.02 145) 14px,oklch(84% 0.02 145) 14px,oklch(84% 0.02 145) 28px)",
-        }}
-      >
-        <div className="font-mono text-[12px]" style={{ color: "oklch(30% 0.04 145)" }}>
-          Now &middot; 1080&times;1440
+      <Image src={progressPhotos.now.src} alt={progressPhotos.now.alt} fill sizes="520px" className="object-cover" />
+      <div className="absolute inset-0 overflow-hidden" style={{ width: `${percent}%` }}>
+        <div className="relative h-full" style={{ width: `${innerWidth}%` }}>
+          <Image
+            src={progressPhotos.before.src}
+            alt={progressPhotos.before.alt}
+            fill
+            sizes="520px"
+            className="object-cover"
+          />
         </div>
       </div>
-      <div
-        className="absolute inset-0 overflow-hidden"
-        style={{
-          width: percent,
-          backgroundImage:
-            "repeating-linear-gradient(135deg,oklch(90% 0.015 85),oklch(90% 0.015 85) 14px,oklch(84% 0.015 85) 14px,oklch(84% 0.015 85) 28px)",
-        }}
-      >
-        <div
-          className="absolute top-1/2 left-0 -translate-y-1/2 text-center font-mono text-[12px]"
-          style={{ width: 520, color: "oklch(35% 0.015 85)" }}
-        >
-          Before &middot; 1080&times;1440
-        </div>
-      </div>
-      <div className="absolute top-0 bottom-0 w-[2px] bg-cream-light" style={{ left: percent }} />
+      <div className="absolute top-0 bottom-0 w-[2px] bg-cream-light" style={{ left: `${percent}%` }} />
       <input
         type="range"
         min={0}
