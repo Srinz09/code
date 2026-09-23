@@ -40,13 +40,13 @@ export default function ComparisonSection() {
                 <div className="mb-2.5 text-[14px] font-bold text-ink">{row.label}</div>
                 <div className="flex gap-2.5">
                   <div className="flex-1 rounded-[2px] bg-cream-alt px-3 py-2.5">
-                    <div className="mb-1 text-[10.5px] font-bold tracking-[0.05em] text-[var(--ink-faint)] uppercase">
+                    <div className="mb-1 text-[12px] font-bold tracking-[0.05em] text-[var(--ink-faint)] uppercase">
                       Alone
                     </div>
                     <div className="text-[13px] text-[var(--ink-soft-2)]">{row.alone}</div>
                   </div>
                   <div className="flex-1 rounded-[2px] bg-forest-soft px-3 py-2.5">
-                    <div className="mb-1 text-[10.5px] font-bold tracking-[0.05em] text-forest uppercase">
+                    <div className="mb-1 text-[12px] font-bold tracking-[0.05em] text-forest uppercase">
                       With Guidance
                     </div>
                     <div className="text-[13px] font-semibold text-forest">{row.guided}</div>

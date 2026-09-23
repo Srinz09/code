@@ -17,8 +17,8 @@ export default function SiteHeader() {
         </nav>
         <a
           href="#consultation"
-          className="whitespace-nowrap rounded-[2px] bg-forest font-semibold text-cream-light
-            px-[14px] py-[9px] text-[13px] min-[800px]:px-5 min-[800px]:py-[10px] min-[800px]:text-[14px]"
+          className="whitespace-nowrap rounded-[2px] bg-forest font-semibold text-cream-light inline-flex items-center
+            px-[14px] py-[11px] min-h-11 text-[13px] min-[800px]:px-5 min-[800px]:py-[10px] min-[800px]:min-h-0 min-[800px]:text-[14px]"
         >
           <span className="min-[800px]:hidden">Book Free</span>
           <span className="hidden min-[800px]:inline">Book a Free Consultation</span>

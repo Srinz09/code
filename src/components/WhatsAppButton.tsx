@@ -7,11 +7,13 @@ export default function WhatsAppButton({
   message,
   children,
   className = "",
+  style,
   context,
 }: {
   message?: string;
   children?: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   context: string;
 }) {
   return (
@@ -21,6 +23,7 @@ export default function WhatsAppButton({
       rel="noopener noreferrer"
       onClick={() => track("whatsapp_click", { source: context })}
       className={className}
+      style={style}
     >
       {children}
     </a>

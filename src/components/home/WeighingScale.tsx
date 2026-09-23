@@ -112,7 +112,7 @@ export default function WeighingScale() {
               <div className="mb-2.5 min-h-[15px] text-[12px] font-semibold text-forest-light">{category}</div>
               <div className="min-h-[57px] text-[13px] leading-[1.5] text-[var(--ink-soft-2)]">{message}</div>
             </div>
-            <div className="mt-3 text-center text-[10.5px] text-[var(--ink-faintest)]">
+            <div className="mt-3 text-center text-[12px] text-[var(--ink-faintest)]">
               A general indicator, not a medical diagnosis.
             </div>
           </div>
