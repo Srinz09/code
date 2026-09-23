@@ -3,9 +3,24 @@ import Link from "next/link";
 import ClientStoriesGrid from "@/components/ClientStoriesGrid";
 import { transformationsDisclaimer } from "@/lib/data/content";
 
+const transformationsDescription =
+  "Real client weight-loss and fitness transformation stories, guided by fitwithdebasri. Genuine before/after journeys — individual results vary.";
+
 export const metadata: Metadata = {
-  title: "Transformations",
-  description: "Real client transformation stories — health and fitness journeys guided by fitwithdebasri. Individual results vary.",
+  title: "Real Client Transformations",
+  description: transformationsDescription,
+  alternates: { canonical: "/transformations" },
+  openGraph: {
+    type: "website",
+    url: "https://fitwithdebasri.in/transformations",
+    title: "Real Client Transformations | fitwithdebasri",
+    description: transformationsDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real Client Transformations | fitwithdebasri",
+    description: transformationsDescription,
+  },
 };
 
 export default function TransformationsPage() {
@@ -15,12 +30,15 @@ export default function TransformationsPage() {
         className="sticky top-0 z-50 flex items-center justify-between border-b border-line px-6 py-4 backdrop-blur-[8px]"
         style={{ background: "oklch(96% 0.015 85 / 0.92)" }}
       >
-        <Link href="/" className="font-display text-[20px] font-semibold text-ink">
+        <Link
+          href="/"
+          className="font-display -my-2.5 inline-flex min-h-11 items-center py-2.5 text-[20px] font-semibold text-ink"
+        >
           fitwithdebasri
         </Link>
         <Link
           href="/#consultation"
-          className="rounded-[2px] bg-forest px-5 py-[10px] text-[14px] font-semibold text-cream-light"
+          className="inline-flex min-h-11 items-center rounded-[2px] bg-forest px-5 py-[10px] text-[14px] font-semibold text-cream-light"
         >
           Book a Free Consultation
         </Link>

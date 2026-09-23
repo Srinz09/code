@@ -18,12 +18,12 @@ export default function Hero() {
           <div className="mb-[18px] text-[12.5px] font-bold tracking-[0.12em] text-forest-light uppercase">
             A Real Transformation Story
           </div>
-          <h1
+          <h2
             className="font-display mb-4 max-w-[440px] font-semibold text-ink"
             style={{ fontSize: "clamp(30px,4vw,44px)", lineHeight: 1.14 }}
           >
             You Don&rsquo;t Need It Figured Out. You Just Need To Start.
-          </h1>
+          </h2>
           <p className="mb-6 max-w-[420px] text-[15.5px] leading-[1.6] text-[var(--ink-soft)]">
             I went from 99&nbsp;KG and struggling with my health to a healthier, more consistent life. Now I help
             others do the same &mdash; with structure and accountability.

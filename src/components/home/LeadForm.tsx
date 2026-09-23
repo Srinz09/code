@@ -278,18 +278,25 @@ export default function LeadForm({ variant, page }: { variant: Variant; page: st
               value={form.name}
               onChange={(e) => update("name", e.target.value)}
               placeholder="Name"
+              type="text"
+              autoComplete="name"
               className={`box-border rounded-[2px] border border-line-strong ${c.inputClass}`}
             />
             <input
               value={form.city}
               onChange={(e) => update("city", e.target.value)}
               placeholder="City"
+              type="text"
+              autoComplete="address-level2"
               className={`box-border rounded-[2px] border border-line-strong ${c.inputClass}`}
             />
             <input
               value={form.phone}
               onChange={(e) => update("phone", e.target.value)}
               placeholder="Phone / WhatsApp number"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
               className={`box-border rounded-[2px] border border-line-strong ${c.inputClass}`}
             />
             <label className={`flex items-start leading-[1.5] text-[var(--ink-soft)] ${c.consentClass}`}>

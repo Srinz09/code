@@ -19,6 +19,10 @@ import { homeFaqs } from "@/lib/data/content";
 export default function HomePage() {
   return (
     <>
+      <h1 className="sr-only">
+        fitwithdebasri — Weight Loss &amp; Fitness Transformation Coach In India | Personalized Nutrition &amp;
+        Wellness Coaching
+      </h1>
       <TopBar />
       <SiteHeader />
       <Hero />

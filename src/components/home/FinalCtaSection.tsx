@@ -29,6 +29,7 @@ export default function FinalCtaSection() {
           <WhatsAppButton
             context="final_cta"
             className="rounded-[2px] border border-[oklch(80%_0.02_145)] px-[30px] py-4 text-[15.5px] font-bold"
+            style={{ color: "var(--cta-band-text)" }}
           >
             Chat On WhatsApp
           </WhatsAppButton>
