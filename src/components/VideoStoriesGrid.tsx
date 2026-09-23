@@ -13,9 +13,10 @@ export default function VideoStoriesGrid() {
         >
           <video
             src={video.src}
+            poster={video.poster}
             controls
             playsInline
-            preload="metadata"
+            preload="none"
             className="h-full w-full object-cover"
           >
             Your browser doesn&rsquo;t support embedded video.

@@ -1,12 +1,26 @@
+"use client";
+
+import Link from "next/link";
 import { navLinks } from "@/lib/data/content";
 
 export default function SiteHeader() {
+  function scrollToTop(e: React.MouseEvent) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <div
       className="sticky top-0 z-50 flex items-center justify-between border-b border-line px-6 py-4 backdrop-blur-[8px]"
       style={{ background: "oklch(96% 0.015 85 / 0.92)" }}
     >
-      <div className="font-display text-[20px] font-semibold tracking-[0.01em] text-ink">fitwithdebasri</div>
+      <Link
+        href="/"
+        onClick={scrollToTop}
+        className="font-display -my-2.5 inline-flex min-h-11 items-center py-2.5 text-[20px] font-semibold tracking-[0.01em] text-ink"
+      >
+        fitwithdebasri
+      </Link>
       <div className="flex items-center gap-5">
         <nav className="hidden min-[800px]:flex items-center gap-6 text-[14.5px] font-medium text-[var(--ink-faint)]">
           {navLinks.map((link) => (
