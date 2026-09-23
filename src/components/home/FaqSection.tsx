@@ -1,39 +1,47 @@
 "use client";
 
 import { useState } from "react";
-import Container from "../Container";
-import SectionHeading from "../SectionHeading";
-import { faqs as allFaqs, type Faq } from "@/lib/data/content";
+import type { Faq } from "@/lib/data/content";
 
-export default function FaqSection({ faqs = allFaqs, compact = false }: { faqs?: Faq[]; compact?: boolean }) {
+export default function FaqSection({ faqs, variant }: { faqs: Faq[]; variant: "home" | "start" }) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const home = variant === "home";
 
   return (
-    <section id="faq" className={compact ? "" : "bg-sage py-16 sm:py-24"}>
-      <Container size="narrow">
-        {!compact && <SectionHeading title="Frequently asked questions" />}
-        <div className="flex flex-col">
+    <section id={home ? "faq" : undefined} className={home ? "bg-cream-alt px-6 py-16" : "px-6 py-14"}>
+      <div className="mx-auto" style={{ maxWidth: home ? 720 : 640 }}>
+        <h2
+          className={`font-display text-balance text-center font-semibold text-ink ${home ? "mb-11" : "mb-7"}`}
+          style={home ? { fontSize: "clamp(28px,3.6vw,42px)" } : { fontSize: "22px" }}
+        >
+          {home ? "Frequently Asked Questions" : "Quick Questions"}
+        </h2>
+        <div className="flex flex-col gap-0.5">
           {faqs.map((faq, i) => {
             const open = openIdx === i;
             return (
-              <div key={faq.q} className="border-b border-line py-4">
-                <button
-                  type="button"
+              <div key={faq.q} className={`border-b border-line ${home ? "px-1 py-[18px]" : "px-1 py-4"}`}>
+                <div
                   onClick={() => setOpenIdx(open ? null : i)}
-                  aria-expanded={open}
-                  className="flex w-full items-center justify-between gap-4 text-left text-[15.5px] font-semibold text-ink"
+                  className={`flex cursor-pointer items-center justify-between gap-4 font-semibold text-ink ${
+                    home ? "text-[15.5px]" : "text-[14.5px]"
+                  }`}
                 >
                   <span>{faq.q}</span>
-                  <span className="text-[20px] text-accent-dark" aria-hidden="true">
-                    {open ? "−" : "+"}
-                  </span>
-                </button>
-                {open && <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">{faq.a}</p>}
+                  <span className={`text-forest-light ${home ? "text-[20px]" : "text-[18px]"}`}>{open ? "−" : "+"}</span>
+                </div>
+                {open && (
+                  <div
+                    className={`text-[var(--ink-soft-2)] ${home ? "mt-3 text-[14.5px] leading-[1.65]" : "mt-2.5 text-[13.5px] leading-[1.6]"}`}
+                  >
+                    {faq.a}
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

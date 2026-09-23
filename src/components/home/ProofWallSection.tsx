@@ -1,48 +1,34 @@
-import Link from "next/link";
-import Container from "../Container";
-import SectionHeading from "../SectionHeading";
-import TransformationCard from "./TransformationCard";
-import { transformations } from "@/lib/data/transformations";
-
-const moreProofTypes = [
-  { label: "Written reviews", icon: "✍️" },
-  { label: "Video stories", icon: "🎥" },
-  { label: "WhatsApp proof", icon: "💬" },
-];
+import ClientStoriesGrid from "../ClientStoriesGrid";
+import VideoStoriesGrid from "../VideoStoriesGrid";
 
 export default function ProofWallSection() {
   return (
-    <section id="transformations" className="bg-sage py-16 sm:py-24">
-      <Container size="wide">
-        <SectionHeading eyebrow="The proof wall" title="Real people. Real journeys." subtitle="Placeholders for now — added once a client's story is verified and shared with permission." />
+    <section id="proof" className="bg-cream-alt px-6 py-16">
+      <div className="mx-auto max-w-[820px] text-center">
+        <h2
+          className="font-display text-balance mb-3 font-semibold text-ink"
+          style={{ fontSize: "clamp(28px,3.6vw,42px)" }}
+        >
+          Real People. Real Journeys.
+        </h2>
+        <p className="mx-auto max-w-[520px] text-[15px] text-[var(--ink-faint-2)]">
+          Real proof starts with mine: diabetes, a fatty liver, and surgery to remove a large fibroid &mdash;
+          verified above. The transformations below are real clients, shared with permission &mdash; nothing
+          invented.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {transformations.slice(0, 3).map((t) => (
-            <TransformationCard key={t.id} t={t} compact />
-          ))}
-        </div>
+      <div className="mx-auto mt-11 max-w-[1100px]">
+        <h3 className="font-display mb-1.5 text-center text-[22px] font-semibold text-ink">Client Stories</h3>
+        <p className="mb-7 text-center text-[13.5px] text-[var(--ink-faint)]">
+          Real before-and-after journeys from real clients.
+        </p>
+        <ClientStoriesGrid />
+      </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {moreProofTypes.map((p) => (
-            <span
-              key={p.label}
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-[13px] font-medium text-ink-soft"
-            >
-              <span aria-hidden="true">{p.icon}</span>
-              {p.label} — coming soon
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-10 text-center">
-          <Link
-            href="/transformations"
-            className="inline-flex rounded-md border border-ink-faint/50 px-6 py-3 text-[14.5px] font-semibold text-ink hover:border-ink-soft"
-          >
-            See more transformations
-          </Link>
-        </div>
-      </Container>
+      <div className="mx-auto mt-8 max-w-[1100px]">
+        <VideoStoriesGrid />
+      </div>
     </section>
   );
 }
