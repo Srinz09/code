@@ -3,6 +3,7 @@ import { instagramUrl } from "@/lib/data/social";
 import "./globals.css";
 
 const siteUrl = "https://fitwithdebasri.in";
+const metaPixelId = "1118953817361363";
 const siteDescription =
   "Real weight-loss & fitness transformation coaching from someone who's lived it — from 99 KG to a healthier life. Personalized nutrition, accountability, and wellness guidance for lasting change.";
 
@@ -78,8 +79,33 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '${metaPixelId}');
+fbq('track', 'PageView');`,
+          }}
+        />
       </head>
-      <body className="w-full overflow-x-hidden bg-cream font-body text-ink antialiased">{children}</body>
+      <body className="w-full overflow-x-hidden bg-cream font-body text-ink antialiased">
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
