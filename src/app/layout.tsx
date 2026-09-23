@@ -1,22 +1,8 @@
 import type { Metadata } from "next";
-import { Lora, Inter } from "next/font/google";
 import "./globals.css";
 
-const lora = Lora({
-  variable: "--font-display",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600"],
-});
-
-const inter = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fitwithdebasri.com"),
+  metadataBase: new URL("https://fitwithdebasri.in"),
   title: {
     default: "fitwithdebasri",
     template: "%s | fitwithdebasri",
@@ -27,7 +13,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${lora.variable} ${inter.variable}`}>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="w-full overflow-x-hidden bg-cream font-body text-ink antialiased">{children}</body>
     </html>
   );
