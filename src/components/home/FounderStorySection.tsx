@@ -5,8 +5,8 @@ import Image from "next/image";
 import { storyChapters } from "@/lib/data/founderStory";
 
 const progressPhotos = {
-  before: { src: "/images/founder/story-before.jpg", alt: "Before" },
-  now: { src: "/images/founder/story-now.jpg", alt: "Now" },
+  before: { src: "/images/founder/story-before.webp", alt: "Before" },
+  now: { src: "/images/founder/story-now.webp", alt: "Now" },
 };
 
 function ChapterPlaceholder({ label }: { label: string }) {

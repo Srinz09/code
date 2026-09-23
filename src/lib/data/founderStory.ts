@@ -8,8 +8,8 @@ export type StoryChapter = {
 };
 
 export const heroPhotos = {
-  before: { src: "/images/founder/founder-before.jpg", alt: "Before" },
-  now: { src: "/images/founder/founder-now.jpg", alt: "Now" },
+  before: { src: "/images/founder/founder-before.webp", alt: "Before" },
+  now: { src: "/images/founder/founder-now.webp", alt: "Now" },
 };
 
 /** "Her Story" timeline — the reference marks every chapter image as an explicit, un-filled placeholder. */
