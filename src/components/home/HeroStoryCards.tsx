@@ -59,7 +59,7 @@ export default function HeroStoryCards({
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, oklch(10% 0.01 85 / 0.82) 0%, oklch(10% 0.01 85 / 0.6) 40%, oklch(10% 0.01 85 / 0.3) 65%, oklch(10% 0.01 85 / 0.05) 85%, transparent 100%)",
+                      "linear-gradient(to top, oklch(10% 0.01 85 / 0.92) 0%, oklch(10% 0.01 85 / 0.85) 55%, oklch(10% 0.01 85 / 0.6) 78%, oklch(10% 0.01 85 / 0.25) 92%, transparent 100%)",
                   }}
                 />
               </>
@@ -68,7 +68,11 @@ export default function HeroStoryCards({
               className="absolute inset-0 flex flex-col justify-end px-[22px] py-[26px]"
               style={
                 card.isPhoto
-                  ? { color: card.textColor, textShadow: "0 1px 6px oklch(10% 0.01 85 / 0.55)" }
+                  ? {
+                      color: card.textColor,
+                      textShadow:
+                        "0 1px 3px oklch(10% 0.01 85 / 0.9), 0 2px 10px oklch(10% 0.01 85 / 0.7)",
+                    }
                   : { color: card.textColor }
               }
             >
