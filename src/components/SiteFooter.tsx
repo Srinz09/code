@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { homeDisclaimer } from "@/lib/data/content";
-import { instagramUrl } from "@/lib/data/social";
+import { instagramUrl, facebookUrl } from "@/lib/data/social";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export default function SiteFooter() {
@@ -15,6 +15,9 @@ export default function SiteFooter() {
           <div className="flex flex-wrap gap-5 text-[14px]">
             <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center py-2.5">
               Instagram
+            </a>
+            <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center py-2.5">
+              Facebook
             </a>
             <a href={buildWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center py-2.5">
               WhatsApp

@@ -59,7 +59,7 @@ export default function HeroStoryCards({
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, oklch(10% 0.01 85 / 0.92) 0%, oklch(10% 0.01 85 / 0.85) 55%, oklch(10% 0.01 85 / 0.6) 78%, oklch(10% 0.01 85 / 0.25) 92%, transparent 100%)",
+                      "linear-gradient(to top, oklch(10% 0.01 85 / 0.85) 0%, oklch(10% 0.01 85 / 0.65) 38%, oklch(10% 0.01 85 / 0.35) 55%, oklch(10% 0.01 85 / 0.1) 68%, transparent 78%)",
                   }}
                 />
               </>
