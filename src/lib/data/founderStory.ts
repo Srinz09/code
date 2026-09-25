@@ -4,6 +4,7 @@ export type StoryChapter = {
   body: string;
   imgOrder: 0 | 1;
   imgLabel: string;
+  photo?: { src: string; alt: string };
   tags?: string[];
 };
 
@@ -26,6 +27,7 @@ export const storyChapters: StoryChapter[] = [
     title: "The Decision",
     imgOrder: 1,
     imgLabel: "Photo · 1200×900",
+    photo: { src: "/images/founder/chapter-2-decision.webp", alt: "The Decision" },
     body: "There wasn’t one dramatic moment. There was a quiet decision: something had to change, and it had to start with me.",
   },
   {
