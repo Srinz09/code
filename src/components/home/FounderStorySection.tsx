@@ -48,6 +48,13 @@ function LazyAutoplayVideo({ src, poster }: { src: string; poster: string }) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!inView) return;
+    // Some mobile browsers don't reliably honor `autoPlay` when `src` is
+    // attached after mount rather than present in the initial markup.
+    ref.current?.play().catch(() => {});
+  }, [inView]);
+
   return (
     <div className="relative aspect-[4/3] overflow-hidden rounded-[2px]">
       <video
@@ -58,7 +65,7 @@ function LazyAutoplayVideo({ src, poster }: { src: string; poster: string }) {
         muted
         loop
         playsInline
-        preload="none"
+        preload={inView ? "auto" : "none"}
         className="h-full w-full object-cover"
       />
     </div>
