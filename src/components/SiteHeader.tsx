@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { navLinks } from "@/lib/data/content";
+import SocialIcons from "./SocialIcons";
 
 export default function SiteHeader() {
   function scrollToTop(e: React.MouseEvent) {
@@ -21,7 +22,7 @@ export default function SiteHeader() {
       >
         fitwithdebasri
       </Link>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-2 min-[800px]:gap-5">
         <nav className="hidden min-[800px]:flex items-center gap-6 text-[14.5px] font-medium text-[var(--ink-faint)]">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href}>
@@ -29,6 +30,7 @@ export default function SiteHeader() {
             </a>
           ))}
         </nav>
+        <SocialIcons className="min-[800px]:hidden" size="h-9 w-9" />
         <a
           href="#consultation"
           className="whitespace-nowrap rounded-[2px] bg-forest font-semibold text-cream-light inline-flex items-center
