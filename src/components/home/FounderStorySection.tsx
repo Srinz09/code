@@ -76,7 +76,19 @@ export default function FounderStorySection() {
           {storyChapters.map((chapter) => (
             <div key={chapter.tag} className="flex flex-wrap items-center gap-10">
               <div className="min-w-[240px] flex-1" style={{ order: chapter.imgOrder }}>
-                <ChapterPlaceholder label={chapter.imgLabel} />
+                {chapter.photo ? (
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-[2px]">
+                    <Image
+                      src={chapter.photo.src}
+                      alt={chapter.photo.alt}
+                      fill
+                      sizes="(min-width: 800px) 420px, 90vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <ChapterPlaceholder label={chapter.imgLabel} />
+                )}
               </div>
               <div className="min-w-[240px] flex-1">
                 <div className="mb-2.5 text-[12.5px] font-semibold tracking-[0.1em] text-forest-light uppercase">
