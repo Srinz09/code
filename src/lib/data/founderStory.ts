@@ -5,6 +5,7 @@ export type StoryChapter = {
   imgOrder: 0 | 1;
   imgLabel: string;
   photo?: { src: string; alt: string };
+  video?: { src: string; poster: string };
   tags?: string[];
 };
 
@@ -36,6 +37,7 @@ export const storyChapters: StoryChapter[] = [
     title: "The Process",
     imgOrder: 0,
     imgLabel: "Photo · 1200×900",
+    video: { src: "/videos/founder/chapter-3-process.mp4", poster: "/videos/founder/chapter-3-process-poster.webp" },
     body: "It wasn’t magic, and it wasn’t one product. It was learning, structure, and showing up on the days it was hard.",
     tags: ["Learning", "Structure", "Nutrition", "Lifestyle Changes", "Consistency", "Support", "Accountability", "Patience"],
   },

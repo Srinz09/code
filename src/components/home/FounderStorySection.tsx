@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { storyChapters } from "@/lib/data/founderStory";
 
@@ -21,6 +21,46 @@ function ChapterPlaceholder({ label }: { label: string }) {
       <div className="font-mono text-[12px]" style={{ color: "oklch(40% 0.015 85)" }}>
         {label}
       </div>
+    </div>
+  );
+}
+
+/** Doesn't fetch or play video data until the box scrolls near the
+ * viewport, so a background loop clip never spends mobile data on
+ * visitors who scroll past it. */
+function LazyAutoplayVideo({ src, poster }: { src: string; poster: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="relative aspect-[4/3] overflow-hidden rounded-[2px]">
+      <video
+        ref={ref}
+        poster={poster}
+        src={inView ? src : undefined}
+        autoPlay={inView}
+        muted
+        loop
+        playsInline
+        preload="none"
+        className="h-full w-full object-cover"
+      />
     </div>
   );
 }
@@ -76,7 +116,9 @@ export default function FounderStorySection() {
           {storyChapters.map((chapter) => (
             <div key={chapter.tag} className="flex flex-wrap items-center gap-10">
               <div className="min-w-[240px] flex-1" style={{ order: chapter.imgOrder }}>
-                {chapter.photo ? (
+                {chapter.video ? (
+                  <LazyAutoplayVideo src={chapter.video.src} poster={chapter.video.poster} />
+                ) : chapter.photo ? (
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[2px]">
                     <Image
                       src={chapter.photo.src}
