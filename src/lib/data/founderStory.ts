@@ -20,6 +20,7 @@ export const storyChapters: StoryChapter[] = [
     title: "Before",
     imgOrder: 0,
     imgLabel: "Photo · 1200×900",
+    photo: { src: "/images/founder/chapter-1-before.webp", alt: "Before" },
     body: "I was 99 kg, diabetic, dealing with a fatty liver, and living with a fibroid so large it eventually needed surgery to remove. I felt unhealthy, low on energy, and uncomfortable in my own body. I knew something needed to change, but I didn’t know where to start.",
   },
   {
