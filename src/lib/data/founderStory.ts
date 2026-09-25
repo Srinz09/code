@@ -43,6 +43,7 @@ export const storyChapters: StoryChapter[] = [
     title: "The Transformation",
     imgOrder: 1,
     imgLabel: "Photo · 1200×900",
+    photo: { src: "/images/founder/chapter-4-transformation.webp", alt: "The Transformation" },
     body: "The change happened slowly, through consistency over time — not overnight. Individual results vary.",
   },
 ];
